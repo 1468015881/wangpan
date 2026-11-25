@@ -156,17 +156,13 @@ button { font-family: inherit; }
 .about { background: #fff; }
 .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 76px; align-items: center; }
 .about-media { position: relative; }
-.photo-placeholder {
+.about-img {
+  width: 100%;
   aspect-ratio: 4 / 3;
-  border: 2px dashed #b8d0ab;
+  object-fit: cover;
   border-radius: 22px;
-  background: repeating-linear-gradient(45deg, #edf4e8, #edf4e8 14px, #e7f0e0 14px, #e7f0e0 28px);
-  display: flex; flex-direction: column; align-items: center; justify-content: center;
-  color: #6f9a5f; text-align: center;
+  box-shadow: var(--shadow-sm);
 }
-.photo-placeholder svg { width: 52px; height: 52px; margin-bottom: 14px; }
-.photo-placeholder strong { font-size: 15px; color: #4d7644; }
-.photo-placeholder small { font-size: 12.5px; color: #90a888; margin-top: 6px; }
 .about-badge {
   position: absolute; right: -18px; bottom: -22px;
   background: var(--green-700); color: #fff;
@@ -251,12 +247,13 @@ button { font-family: inherit; }
 .contact-icon svg { width: 21px; height: 21px; }
 .contact-item small { display: block; font-size: 12px; color: rgba(255, 255, 255, .55); }
 .contact-item strong { display: block; font-size: 14px; color: #fff; line-height: 1.5; margin-top: 2px; font-weight: 600; }
-.map-placeholder { position: relative; min-height: 100%; }
-.map-placeholder svg { width: 100%; height: 100%; object-fit: cover; }
+.map-wrap { position: relative; min-height: 100%; background: #eaf0e4; }
+.map-iframe { position: absolute; inset: 0; width: 100%; height: 100%; min-height: 340px; border: 0; }
 .map-label {
   position: absolute; bottom: 18px; left: 50%; transform: translateX(-50%);
   background: rgba(255, 255, 255, .92); color: #4c6b46;
   font-size: 12px; padding: 7px 16px; border-radius: 20px; white-space: nowrap;
+  z-index: 2;
 }
 
 /* ========== 页脚 ========== */
@@ -309,7 +306,7 @@ button { font-family: inherit; }
   .about-badge { right: 12px; }
   .steps { grid-template-columns: repeat(2, 1fr); row-gap: 40px; }
   .step:nth-child(2)::after { display: none; }
-  .map-placeholder { min-height: 340px; }
+  .map-wrap, .map-iframe { min-height: 340px; }
 }
 
 @media (max-width: 600px) {
@@ -344,7 +341,7 @@ button { font-family: inherit; }
   .step h3, .step p { text-align: center; }
   .contact-copy { padding: 40px 24px; }
   .contact-list { grid-template-columns: 1fr; gap: 18px; }
-  .map-placeholder { min-height: 260px; }
+  .map-wrap, .map-iframe { min-height: 260px; }
   .footer-inner { flex-direction: column; align-items: flex-start; gap: 18px; }
   .footer-meta { text-align: left; }
 }
